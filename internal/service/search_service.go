@@ -24,9 +24,10 @@ func NewSearchService(repo *repository.ProductRepository, logger *zap.Logger) *S
 func (s *SearchService) Search(ctx context.Context, mpn string, qty int) ([]dto.SearchItem, error) {
 
 	if s.logger != nil {
-		s.logger.Info("service search started")
-		zap.String("mpn:", mpn)
-		zap.Int("qty", qty)
+		s.logger.Info("service search started",
+			zap.String("mpn", mpn),
+			zap.Int("qty", qty),
+		)
 	}
 
 	rows, err := s.repo.SearchByName(ctx, mpn)
@@ -65,13 +66,13 @@ func (s *SearchService) Search(ctx context.Context, mpn string, qty int) ([]dto.
 				breaks = append(breaks, dto.PriceBreak{
 					Quantity: item.Quant,
 					Price:    item.Price,
-					Currency: item.Currency,
+					Currency: item.SupplierCurrency,
 				})
 			}
 
 			if item.Quant <= qty {
 				basePrice = item.Price
-				currency = item.Currency
+				currency = item.SupplierCurrency
 			}
 		}
 

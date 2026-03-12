@@ -9,14 +9,15 @@ import (
 )
 
 type ProductRow struct {
-	Code         string
-	Producer     string
-	Supplier     string
-	Quant        int
-	Price        float64
-	Currency     string
-	QtyAvailable int
-	Moq          int
+	Code             string
+	Producer         string
+	Supplier         string
+	SupplierCurrency string
+	Quant            int
+	Price            float64
+	Currency         string
+	QtyAvailable     int
+	Moq              int
 }
 
 type ProductRepository struct {
@@ -38,6 +39,7 @@ func (r *ProductRepository) SearchByName(ctx context.Context, name string) ([]Pr
 		p.code,
 		pr.name,
 		s.name,
+		s.currency,
 		cp.quant,
 		cp.price,
 		cp.currency,
@@ -77,6 +79,7 @@ func (r *ProductRepository) SearchByName(ctx context.Context, name string) ([]Pr
 			&row.Code,
 			&row.Producer,
 			&row.Supplier,
+			&row.SupplierCurrency,
 			&row.Quant,
 			&row.Price,
 			&row.Currency,
