@@ -10,6 +10,7 @@ import (
 
 type ProductRow struct {
 	Code             string
+	Name             string
 	Producer         string
 	Supplier         string
 	SupplierCurrency string
@@ -37,6 +38,7 @@ func (r *ProductRepository) SearchByName(ctx context.Context, name string) ([]Pr
 	query := `
 	SELECT 
 		p.code,
+		p.name,
 		pr.name,
 		s.name,
 		s.currency,
@@ -77,6 +79,7 @@ func (r *ProductRepository) SearchByName(ctx context.Context, name string) ([]Pr
 		var row ProductRow
 		err := rows.Scan(
 			&row.Code,
+			&row.Name,
 			&row.Producer,
 			&row.Supplier,
 			&row.SupplierCurrency,

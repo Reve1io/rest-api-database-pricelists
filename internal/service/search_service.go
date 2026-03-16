@@ -77,7 +77,7 @@ func (s *SearchService) Search(ctx context.Context, mpn string, qty int) ([]dto.
 		}
 
 		result = append(result, dto.SearchItem{
-			MPN:          first.Code,
+			MPN:          first.Name,
 			RequestedMPN: mpn,
 			RequestedQty: qty,
 			Manufacturer: first.Producer,
