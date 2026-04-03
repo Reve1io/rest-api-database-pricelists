@@ -7,6 +7,7 @@ type PriceBreak struct {
 	TargetPricePurchasing float64 `json:"target_price_purchasing"`
 	TargetPriceSales      float64 `json:"target_price_sales"`
 	Currency              string  `json:"currency"`
+	DeliveryTime          string  `json:"delivery_time"`
 }
 
 type SearchItem struct {

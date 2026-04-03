@@ -64,9 +64,10 @@ func (s *SearchService) Search(ctx context.Context, mpn string, qty int) ([]dto.
 		for _, item := range items {
 			if qty >= item.Moq {
 				breaks = append(breaks, dto.PriceBreak{
-					Quantity: item.Quant,
-					Price:    item.Price,
-					Currency: item.SupplierCurrency,
+					Quantity:     item.Quant,
+					Price:        item.Price,
+					Currency:     item.SupplierCurrency,
+					DeliveryTime: item.SupplierDeliveryTime,
 				})
 			}
 
