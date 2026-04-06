@@ -19,6 +19,7 @@ type SearchItem struct {
 	Status       string       `json:"status"`
 	Price        float64      `json:"price"`
 	Currency     string       `json:"currency"`
+	DeliveryTime string       `json:"delivery_time"`
 	PriceBreaks  []PriceBreak `json:"priceBreaks"`
 	Supplier     string       `json:"supplier"`
 }

@@ -86,6 +86,7 @@ func (s *SearchService) Search(ctx context.Context, mpn string, qty int) ([]dto.
 			Status:       "Найдено",
 			Price:        basePrice,
 			Currency:     currency,
+			DeliveryTime: first.SupplierDeliveryTime,
 			PriceBreaks:  breaks,
 			Supplier:     supplier,
 		})
